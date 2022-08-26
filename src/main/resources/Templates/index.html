@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <title th:text="#{task.title}"></title>
+    <link th:href="@{/css/table.css}" rel="stylesheet" type="text/css"/>
+
+</head>
+<body>
+
+
+<div class="container-md">
+
+    <h1 th:text="#{task.headline}"></h1>
+
+    </br>
+    </br>
+    <a th:href="@{/new}">
+        <button type="button" class="btn btn-primary" aria-pressed="true" th:text="#{task.create}"></button>
+    </a>
+    </br>
+    </br>
+
+    <table>
+        <tr class="">
+            <th th:text="#{task.id}"></th>
+            <th th:text="#{task.description}"></th>
+            <th th:text="#{task.category}"></th>
+            <th th:text="#{task.priority}"></th>
+            <th th:text="#{task.date}"></th>
+        </tr>
+        <tr th:each="task,iterStat : ${task}" th:class="'grey-row'">
+            <th th:text="${task.id}"></th>
+            <th th:text="${task.description}"></th>
+            <th th:text="${task.category}"></th>
+            <th th:text="${task.priority}"></th>
+            <th th:text="${#dates.format(task.date, 'dd/MM/yyyy')}"></th>
+        </tr>
+    </table>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+        integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+        integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+        crossorigin="anonymous"></script>
+</body>
+</html>
